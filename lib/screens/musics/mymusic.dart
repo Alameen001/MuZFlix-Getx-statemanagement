@@ -73,8 +73,24 @@ class musicscreen extends StatelessWidget {
             ),
             builder: (context, item) {
               if (item.data == null) {
-                return const Center(
-                  child: CircularProgressIndicator(),
+                return  Center(
+                  
+                  child: Container(
+                       height: double.infinity,
+                      width: double.infinity,
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Colors.black,
+                            Color.fromARGB(255, 158, 48, 48),
+                            Colors.black,
+                          ],
+                        ),
+                      ),
+                    
+                    child: CircularProgressIndicator( color: Colors.green,)),
                 );
               }
               if (item.data!.isEmpty) {
@@ -121,21 +137,37 @@ class musicscreen extends StatelessWidget {
 
                                   //-----Snackbar----//
 
-                                  final snackBar = SnackBar(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(13),
-                                    ),
-                                    backgroundColor: Colors.red,
-                                    content: const Text(
-                                      ' Added to favourites',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  );
-                                  ScaffoldMessenger.of(context)
-                                      .showSnackBar(snackBar);
+                                  // final snackBar = SnackBar(
+                                  //   shape: RoundedRectangleBorder(
+                                  //     borderRadius: BorderRadius.circular(13),
+                                  //   ),
+                                  //   backgroundColor: Colors.red,
+                                  //   content: const Text(
+                                  //     ' Added to favourites',
+                                  //     textAlign: TextAlign.center,
+                                  //     style: TextStyle(
+                                  //         color: Colors.white,
+                                  //         fontWeight: FontWeight.bold),
+                                  //   ),
+                                  // );
+                                  // ScaffoldMessenger.of(context)
+                                  //     .showSnackBar(snackBar);
+
+
+
+                                  Get.snackbar("Favourites", " Added to favourites ",
+                                  icon: Icon(Icons.favorite,color: Color.fromARGB(255, 247, 19, 2),),
+                                   titleText: Text("Favourites",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
+
+                                  messageText: Text(" Added to favourites",style: TextStyle(color: Colors.red,fontSize: 16),),
+                                  backgroundColor: Colors.white,
+                                  duration: Duration(seconds: 2),
+                                  mainButton: TextButton(onPressed: (){
+                                    Get.back();
+                                  }, child: Text("OK",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),)
+                                  ));
+
+
                                 },
                                 backgroundColor: Color.fromARGB(255, 50, 63, 77),
                                 foregroundColor: Colors.white,
@@ -223,17 +255,17 @@ class musicscreen extends StatelessWidget {
             }));
   }
 
-  void songsLibrary(int index, List<Audio> audios) async {
-    await player.open(
-      Playlist(
-        audios: audios,
-        startIndex: index,
-      ),
-      showNotification: true,
-      notificationSettings: const NotificationSettings(
-        stopEnabled: true,
-      ),
-      playInBackground: PlayInBackground.enabled,
-    );
-  }
+  // void songsLibrary(int index, List<Audio> audios) async {
+  //   await player.open(
+  //     Playlist(
+  //       audios: audios,
+  //       startIndex: index,
+  //     ),
+  //     showNotification: true,
+  //     notificationSettings: const NotificationSettings(
+  //       stopEnabled: true,
+  //     ),
+  //     playInBackground: PlayInBackground.enabled,
+  //   );
+  // }
 }

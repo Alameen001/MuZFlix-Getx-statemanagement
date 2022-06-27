@@ -120,6 +120,20 @@ class PlaylistInfo extends StatelessWidget {
                                 // });
                                 playinfo.PlaylistDelete(
                                     playlistsongs[index].id, playlistKey);
+
+                                    Get.snackbar("", "  ",
+                                  icon: Icon(Icons.playlist_add,color: Colors.black),
+                                   titleText: Text("PlayLIst Songs",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
+
+                                  messageText: Text("Remove Playlist Songs",style: TextStyle(color: Colors.blue,fontSize: 16),),
+                                  backgroundColor: Colors.white,
+                                  duration: Duration(seconds: 2),
+                                
+                                  mainButton: TextButton(onPressed: (){
+                                    Get.back();
+                                  }, child: Text("OK",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),)
+                                  ));
+                               
                               },
                               backgroundColor: Color(0xFFFE4A49),
                               foregroundColor: Colors.white,

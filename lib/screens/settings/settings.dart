@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -74,7 +75,16 @@ class Settingsscreen extends StatelessWidget {
               ),
               ListTile(
                 onTap: () {
-                  aboutUs(context);
+                  // aboutUs(context);
+
+                  Get.defaultDialog(title: "Hi Iam AL-AMEEN",
+              
+                  content: Column(
+                    children: [
+                      Text(" Iam A Flutter Developer"),
+                      // Text("alameen001.github.io/Personel-Website"),
+                    ],
+                  ));
                 },
                 leading: const Icon(
                   Icons.person_outline_sharp,
@@ -91,19 +101,29 @@ class Settingsscreen extends StatelessWidget {
               ),
               ListTile(
                 onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) {
-                      return LicensePage(
-                      
-                        applicationIcon: Image.asset('assets/appstore.png'),
+                  Get.to( LicensePage(
+                    applicationIcon: Image.asset('assets/appstore.png'),
                         applicationName: 'MuZFlix',
                         applicationVersion:
                             "Version 1.0.0\n\nCopyright © 2022-2023",
                         applicationLegalese:
                             "Developed by Al Ameen Ahammed Kabeer ",
-                      );
-                    },
                   ));
+
+
+                  // Navigator.of(context).push(MaterialPageRoute(
+                  //   builder: (context) {
+                  //     return LicensePage(
+                      
+                  //       applicationIcon: Image.asset('assets/appstore.png'),
+                  //       applicationName: 'MuZFlix',
+                  //       applicationVersion:
+                  //           "Version 1.0.0\n\nCopyright © 2022-2023",
+                  //       applicationLegalese:
+                  //           "Developed by Al Ameen Ahammed Kabeer ",
+                  //     );
+                  //   },
+                  // ));
                 },
                 leading: const Icon(
                   Icons.report_gmailerrorred_sharp,
@@ -143,21 +163,24 @@ class Settingsscreen extends StatelessWidget {
     );
   }
 
-  void aboutUs(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return const AlertDialog(
-          backgroundColor: Colors.black,
-          content: Padding(
-            padding: EdgeInsets.only(bottom: 10, top: 10.0),
-            child: Text(
-              'Hi I am  AL AMEEN a Flutter developer alameen001.github.io/Personel-Website',
-              style: TextStyle(color: Color.fromARGB(255, 240, 237, 235)),
-            ),
-          ),
-        );
-      },
-    );
-  }
+
+
+
+  // void aboutUs(BuildContext context) {
+  //   showDialog(
+  //     context: context,
+  //     builder: (context) {
+  //       return const AlertDialog(
+  //         backgroundColor: Colors.black,
+  //         content: Padding(
+  //           padding: EdgeInsets.only(bottom: 10, top: 10.0),
+  //           child: Text(
+  //             'Hi I am  AL AMEEN a Flutter developer alameen001.github.io/Personel-Website',
+  //             style: TextStyle(color: Color.fromARGB(255, 240, 237, 235)),
+  //           ),
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
 }

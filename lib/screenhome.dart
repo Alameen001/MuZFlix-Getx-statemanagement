@@ -17,7 +17,7 @@ class screenhome extends StatelessWidget {
   //   return source.firstWhere((element) => element.path == fromPath);
   // }
 
-  int _currentselectedindex = 0;
+  // int _currentselectedindex = 0;
 
   final _pages = [
     musicscreen(),
@@ -28,7 +28,7 @@ class screenhome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  final  Homecontroller bottomcontroller = Get.find<Homecontroller>();
+    final Homecontroller bottomcontroller = Get.find<Homecontroller>();
     return Scaffold(
       extendBodyBehindAppBar: true,
       extendBody: true,
@@ -56,11 +56,9 @@ class screenhome extends StatelessWidget {
           bottomcontroller.onSelectedItem(newindex);
         },
       ),
-      body: GetBuilder<Homecontroller>(
-        builder: ( controller) {
-          return _pages[controller.currentselectedindex ];
-        }
-      ),
+      body: GetBuilder<Homecontroller>(builder: (controller) {
+        return _pages[controller.currentselectedindex];
+      }),
       bottomSheet: const MiniPlayer(),
     );
   }

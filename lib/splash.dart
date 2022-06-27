@@ -6,38 +6,24 @@ import 'package:lottie/lottie.dart';
 import 'package:music_application_1/controller/home_controler.dart';
 import 'package:music_application_1/screenhome.dart';
 
-
-
 class Splashscreen extends StatelessWidget {
-   Splashscreen({Key? key}) : super(key: key);
-
-
-
- 
+  Splashscreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final Homecontroller homecontroller =Get.put(Homecontroller());
-    return Scaffold(
+    final Homecontroller homecontroller = Get.put(Homecontroller());
+   return Scaffold(
       backgroundColor: Colors.black,
-      
-      body:
-      
-       Container(
-         height: double.infinity,
+      body: Container(
+        height: double.infinity,
         width: double.infinity,
-         child: Column(
-          
-          
+        child: Column(
           children: [
             SizedBox(
-              height: 80,
+              height: MediaQuery.of(context).size.height * 0.1,
             ),
-           
-             Container(
-              
+            Container(
               child: TextLiquidFill(
-             
                 boxHeight: 80,
                 text: 'MuZ Flix',
                 waveColor: Color.fromARGB(255, 241, 237, 237),
@@ -47,32 +33,31 @@ class Splashscreen extends StatelessWidget {
                 ),
               ),
             ),
-
             SizedBox(
-              height: 50,
+              height: MediaQuery.of(context).size.height * 0.1,
             ),
             Container(
               child: Image.asset(
                 'assets/muzflix (1024 × 1024 px) (2).png',
-                width: 300,
+                width: MediaQuery.of(context).size.width * 0.8,
+                height: MediaQuery.of(context).size.height * 0.4,
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 20),
               child: Container(
-                  height: 100,
-                      width: 180,
-                      child: Lottie.asset('assets/106903-red-sound-wave.json',
-                          width: double.infinity, height:double.infinity, fit: BoxFit.cover),
-
+                height: MediaQuery.of(context).size.height * 0.1,
+                width: MediaQuery.of(context).size.width * 0.4,
+                child: Lottie.asset('assets/106903-red-sound-wave.json',
+                    width: double.infinity,
+                    height: double.infinity,
+                    fit: BoxFit.cover),
               ),
             ),
-           
+            Spacer()
           ],
+        ),
       ),
-       ),
     );
   }
-
-
 }

@@ -2,27 +2,25 @@ import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:marquee/marquee.dart';
 
 import 'package:music_application_1/screens/musics/mymusic.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
-class NowPlaying extends StatefulWidget {
+
+AssetsAudioPlayer player = AssetsAudioPlayer.withId('0');
+
+class NowPlaying extends StatelessWidget {
   const NowPlaying({
     Key? key,
   }) : super(key: key);
 
-  @override
-  State<NowPlaying> createState() => _NowPlayingState();
-}
 
-AssetsAudioPlayer player = AssetsAudioPlayer.withId('0');
 
-class _NowPlayingState extends State<NowPlaying>
-    with SingleTickerProviderStateMixin {
+
   // bool _isPLaying = false;
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -50,7 +48,8 @@ class _NowPlayingState extends State<NowPlaying>
             actions: [
               IconButton(
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    // Navigator.of(context).pop();
+                    Get.back();
                   },
                   icon: const Icon(Icons.arrow_drop_down))
             ],
@@ -70,6 +69,7 @@ class _NowPlayingState extends State<NowPlaying>
             ),
             height: double.infinity,
             width: double.infinity,
+          
             child: player.builderCurrent(
               builder: (context, playing) {
                 return Builder(builder: (context) {
@@ -118,8 +118,8 @@ class _NowPlayingState extends State<NowPlaying>
                         padding: const EdgeInsets.only(
                             top: 10, left: 43, right: 42, bottom: 20),
                         child: Container(
-                          height: 340,
-                          width: 400,
+                          height: MediaQuery.of(context).size.height*0.5,
+                          width:  MediaQuery.of(context).size.width*0.8,
                           child: QueryArtworkWidget(
                             artworkBorder: BorderRadius.circular(20),
                             artworkFit: BoxFit.cover,
@@ -140,8 +140,8 @@ class _NowPlayingState extends State<NowPlaying>
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        height: 20,
+                       SizedBox(
+                        height:10
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 18.0, right: 18.0),
@@ -228,7 +228,9 @@ class _NowPlayingState extends State<NowPlaying>
                             ),
                           ],
                         ),
+                        
                       ),
+                      Spacer(),
                     ],
                   );
                 });
@@ -237,7 +239,7 @@ class _NowPlayingState extends State<NowPlaying>
           )),
     );
   }
-
+  
   Widget seekBarWidget(BuildContext ctx) {
     return player.builderRealtimePlayingInfos(
       builder: (ctx, infos) {

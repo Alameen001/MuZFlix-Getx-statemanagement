@@ -121,6 +121,8 @@ class playlistscreen extends StatelessWidget {
                                 onPressed: (context) {
                              
                                   playController.deletePlaylist(context, audioRoom, songs, index);
+
+                                  
                                  
                                
                                 },

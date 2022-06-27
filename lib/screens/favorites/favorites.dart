@@ -118,6 +118,20 @@ class favoritescreen extends StatelessWidget {
 
                             onPressed: (context) {
                               favcont.deleteFromFav(audioRoom, favorites[index].key);
+                               Get.snackbar("", "  ",
+                                titleText: Text("Deleted",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
+                               
+                                 messageText: Text("Remove Favorites songs",style: TextStyle(fontSize: 16),),
+                                  icon: Icon(Icons.heart_broken_rounded,color: Color.fromARGB(255, 252, 20, 3),),
+                                  backgroundColor: Colors.white,
+                                  duration: Duration(seconds: 2),
+                                  snackStyle: SnackStyle.FLOATING,
+                                  mainButton: TextButton(onPressed: (){
+                                    Get.back();
+                                  }, child: Text("OK",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),)
+                                  ));
+                          
+                              
                             },
                             backgroundColor: const Color(0xFFFE4A49),
                             foregroundColor: Colors.white,

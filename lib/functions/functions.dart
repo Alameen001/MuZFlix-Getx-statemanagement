@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:on_audio_query/on_audio_query.dart';
 import 'package:on_audio_room/on_audio_room.dart';
@@ -51,22 +52,40 @@ void dialogBox(
                                     allsongs[songIndex].getMap.toSongEntity(),
                                     playlistKey: item.data![index].key,
                                     ignoreDuplicate: false);
-                                final snackBar = SnackBar(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(13),
-                                  ),
-                                  backgroundColor: Colors.red,
-                                  content: const Text(
-                                    ' Added to Playlist',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                );
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(snackBar);
-                                Navigator.pop(ctx);
+                                // final snackBar = SnackBar(
+                                //   shape: RoundedRectangleBorder(
+                                //     borderRadius: BorderRadius.circular(13),
+                                //   ),
+                                //   backgroundColor: Colors.red,
+                                //   content: const Text(
+                                //     ' Added to Playlist',
+                                //     textAlign: TextAlign.center,
+                                //     style: TextStyle(
+                                //         color: Colors.white,
+                                //         fontWeight: FontWeight.bold),
+                                //   ),
+                                // );
+                                // ScaffoldMessenger.of(context)
+                                //     .showSnackBar(snackBar);
+                          
+                              
+
+                                 Get.snackbar("Play List", " Added to PlayList ",
+                                titleText: Text("Play List",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
+                               
+                                 messageText: Text("Added to PlayList",style: TextStyle(fontSize: 16),),
+                                  icon: Icon(Icons.playlist_add,color: Colors.blue,),
+                                  backgroundColor: Colors.white,
+                                  duration: Duration(seconds: 2),
+                                  snackStyle: SnackStyle.FLOATING,
+                                  mainButton: TextButton(onPressed: (){
+                                    Get.back();
+                                  }, child: Text("OK",style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold),)
+                                  ));
+                                 
+                                        Navigator.pop(ctx);
+
+                                 
                               },
                               title: Text(
                                 item.data![index].playlistName,

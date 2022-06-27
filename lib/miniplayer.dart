@@ -1,19 +1,16 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:marquee/marquee.dart';
 
 import 'package:music_application_1/screens/musics/mymusic.dart';
 import 'package:music_application_1/screens/nowplaying.dart';
 
-class MiniPlayer extends StatefulWidget {
+class MiniPlayer extends StatelessWidget {
   const MiniPlayer({Key? key}) : super(key: key);
 
-  @override
-  State<MiniPlayer> createState() => _MiniPlayerState();
-}
 
-class _MiniPlayerState extends State<MiniPlayer> {
   @override
   Widget build(BuildContext context) {
     return player.builderCurrent(
@@ -23,10 +20,13 @@ class _MiniPlayerState extends State<MiniPlayer> {
           height: 70,
           width: MediaQuery.of(context).size.width,
           child: ListTile(
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const NowPlaying()),
-            ),
+            // onTap: () => Navigator.push(
+            //   context,
+            //   MaterialPageRoute(builder: (context) => const NowPlaying()),
+            // ),
+            onTap: () {
+              Get.to(NowPlaying());
+            },
             title: SizedBox(
               height: 18,
               child: SizedBox(
