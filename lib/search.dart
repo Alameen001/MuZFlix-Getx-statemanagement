@@ -1,7 +1,9 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:music_application_1/controller/home_controler.dart';
 
 import 'package:music_application_1/openplayer.dart';
 import 'package:music_application_1/screens/musics/mymusic.dart';
@@ -10,7 +12,7 @@ import 'package:on_audio_query/on_audio_query.dart';
 import 'package:on_audio_room/on_audio_room.dart';
 
 class deligatesearch extends SearchDelegate {
-  List<String> allData = [''];
+  // List<String> allData = [''];
 
   @override
   List<Widget>? buildActions(BuildContext context) {
@@ -59,6 +61,7 @@ class deligatesearch extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
+
     return Center(
       child: Text(
         query,
@@ -73,12 +76,12 @@ class deligatesearch extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    final searchSongItem = query.isEmpty
-        ? allSongs
-        : allSongs
+   final homecontroller= Get.find<Homecontroller>();
+    final searchSongItem = query.isEmpty? homecontroller.allSongs:
+     homecontroller. allSongs
             .where(
-              (element) => element.title.toLowerCase().contains(
-                    query.toLowerCase().toString(),
+              (element) => element.title.toLowerCase().toString().contains(
+                    query.toLowerCase(),
                   ),
             )
             .toList();
@@ -133,9 +136,11 @@ class deligatesearch extends SearchDelegate {
                     // },
 
                     onTap: () async {
+   final homecontroller= Get.find<Homecontroller>();
+
                       List<Audio> searchAudio = [];
 
-                      for (var item in allSongs) {
+                      for (var item in homecontroller.allSongs) {
                         searchAudio.add(Audio.file(item.uri!,
                             metas: Metas(
                               id: item.id.toString(),
@@ -144,7 +149,7 @@ class deligatesearch extends SearchDelegate {
                             )));
                       }
 
-                      int currentIndex = allSongs.indexWhere((element) => element.id == searchSongItem[index].id);
+                      int currentIndex = homecontroller.allSongs.indexWhere((element) => element.id == searchSongItem[index].id);
                            
                       await OpenMusic(
                         fullSongs: [],
@@ -160,7 +165,7 @@ class deligatesearch extends SearchDelegate {
                       artworkHeight: 60,
                       artworkWidth: 60,
                       size: 600,
-                      id: searchSongItem[index].id,
+                      id:int.parse( searchSongItem[index].id.toString()),
                       type: ArtworkType.AUDIO,
                       nullArtworkWidget: ClipRRect(
                         borderRadius: const BorderRadius.all(
@@ -176,22 +181,22 @@ class deligatesearch extends SearchDelegate {
                     ),
                     title: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
-                      child: Text(searchSongItem[index].title, 
+                      child: Text(searchSongItem[index].title.toString(), 
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                           color: Color.fromARGB(255, 202, 197, 197),
                         ),
-                      ),
-                    ),
+                      ),)
+                    );
                     // trailing: InkWell(
                     //   onTap: () {
 
                     //   },
                     //   child: const Icon(Icons.more_vert_outlined,color: Colors.black,size: 30,),
                     // ),
-                  );
-                },
+                }
+              ,
                 separatorBuilder: (BuildContext context, int index) {
                   return Padding(
                     padding: const EdgeInsets.only(
@@ -206,6 +211,3 @@ class deligatesearch extends SearchDelegate {
     );
   }
 }
-
-
-

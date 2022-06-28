@@ -90,7 +90,7 @@ class musicscreen extends StatelessWidget {
                         ),
                       ),
                     
-                    child: CircularProgressIndicator( color: Colors.green,)),
+                    child: CircularProgressIndicator()),
                 );
               }
               if (item.data!.isEmpty) {
